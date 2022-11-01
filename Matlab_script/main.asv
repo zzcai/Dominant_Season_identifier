@@ -2,7 +2,7 @@ clear
 
 %% vpp labels
 % tile name
-tilename = '33VUE';
+tilename = '32TNS';
 % year
 year = '2019';
 % list of VPP name
@@ -32,15 +32,15 @@ TPROD_s1_s2 = cat(3,TPROD_s1,TPROD_s2);
 [maxTPROD,dsid] = max(TPROD_s1_s2,[],3);
 
 %% generate dominent seasons
-for i = 1:length(vppname)
+for i = 1%:length(vppname)
     % import s1 TPROD
-    findvpp1 = dir([vppfolder,'*',year,'*',tilename,'*','_s1_',vppname{i},'.tif']); % find s1 vpp
-    vppfile1 = fullfile(findvpp1.folder,findvpp1.name);
+    findvpp = dir([vppfolder,'*',year,'*',tilename,'*','_s1_',vppname{i},'.tif']); % find s1 vpp
+    vppfile1 = fullfile(findvpp.folder,findvpp.name);
     [vpp_s1,~] = geotiffread(vppfile1); % 
 
     % import s2 TPROD
-    findvpp2 = dir([vppfolder,'*',year,'*',tilename,'*','_s2_',vppname{i},'.tif']); % find s2 vpp
-    vppfile1 = fullfile(findvpp2.folder,findvpp2.name);
+    findvpp = dir([vppfolder,'*',year,'*',tilename,'*','_s2_',vppname{i},'.tif']); % find s2 vpp
+    vppfile1 = fullfile(findvpp.folder,findvpp.name);
     [vpp_s2,R] = geotiffread(vppfile1); % 
     info = geotiffinfo(vppfile1);
 
@@ -50,8 +50,8 @@ for i = 1:length(vppname)
     vpp_dominant(dsid==2) = vpp_s2(dsid==2);
 
     % generate new output
-    ouputfile = strrep(findvpp1.name,'_s1_','_main_');
+    strrep(str,old,new)
     % write the dominant to tiff
-    geotiffwrite(fullfile(outfolder,ouputfile),vpp_dominant,R,...
+    geotiffwrite('test.tif',vpp_dominant,R,...
         'GeoKeyDirectoryTag',info.GeoTIFFTags.GeoKeyDirectoryTag);
 end
