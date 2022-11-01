@@ -1,0 +1,32 @@
+# Fortran
+*.mod
+*.o
+*.os
+*.a
+*.dSYM
+*.obj
+*.so
+
+# Matlab
+*.mat
+*.p
+*.m~
+*.asv
+
+# Mac
+*.DS_Store
+
+# TIMESAT
+*.tfp
+*.tpa
+*.tfq
+*.tts
+*.ndx
+
+# temporal
+*~
+*.xml
+*.iml
+
+# f2py
+*.so
