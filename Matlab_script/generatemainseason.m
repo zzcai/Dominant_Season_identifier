@@ -19,19 +19,19 @@ s1_s2 = cat(3,s1,s2);
 %% generate dominent seasons
 for i = 1:length(vppname)
     % import s1
-    vppfile1 = fullfile(vppfolder,fl{i,1});
-    if ~isfile(vppfile1)
+    vppfile = fullfile(vppfolder,fl{i,1});
+    if ~isfile(vppfile)
         continue
     end
-    [vpp_s1,~] = geotiffread(vppfile1); % 
+    [vpp_s1,~] = geotiffread(vppfile); % 
 
     % import s2
-    vppfile1 = fullfile(vppfolder,fl{i,2});
-    if ~isfile(vppfile2)
+    vppfile = fullfile(vppfolder,fl{i,2});
+    if ~isfile(vppfile)
         continue
     end
-    [vpp_s2,R] = geotiffread(vppfile1); % 
-    info = geotiffinfo(vppfile1);
+    [vpp_s2,R] = geotiffread(vppfile); % 
+    info = geotiffinfo(vppfile);
 
     % create vpp_dominant
     vpp_dominant = vpp_s1;
